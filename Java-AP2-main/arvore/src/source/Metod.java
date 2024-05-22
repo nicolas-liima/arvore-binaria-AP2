@@ -14,7 +14,7 @@ public class Metod {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Digite a expressão aritmética totalmente parentizada: ");
         String expression = scanner.nextLine();
-    	String expression = "(((5+2)*(2-1))/(((2+9)+(7-2)-1)*8))";   	// A expressão do slide esta errada, falta parenteses então decida qual o jeito certo
+    	String expression = "(((5+2)*(2-1))/(((2+9)+(7-2)-1)*8))";   	// A expressão no slide esta errada, falta parenteses então decida qual o jeito certo
         int[] count = new int[1];
         int[] values = {31, 25, 42, 12, 36, 56, 62, 75, 90}; // Valores para inserir na árvore
         Node root = null;
@@ -32,20 +32,20 @@ public class Metod {
         printTree(tree, tree.root(), 0);
 
 
-        // Percorrer a árvore em pós-ordem binário
+        // Vai Percorrer a árvore em pós-ordem binário
         System.out.println();
         System.out.println("binaryPostorder");
         System.out.print("Percurso em pós-ordem: ");
         binaryPostorder(tree, tree.root());
         System.out.println();
 
-        // Avaliar a expressão aritmética
+        // Vai avaliar a expressão aritmética
         double result = evaluateExpression(tree, tree.root());
         System.out.println();
         System.out.println("evaluateExpression");
         System.out.println("Resultado da expressão: " + result);
         
-        // Percorrer a árvore em ordem inorder
+        // Percorre a árvore em ordem inorder
         System.out.println();
         System.out.println("inorder");
         System.out.print("Percurso em ordem inorder: ");
@@ -63,14 +63,14 @@ public class Metod {
         System.out.println("Coordenadas dos nodos:");
         inorderWithCoordinates(tree, tree.root(), 0, count); 
         
-     // Percorrer a árvore usando o caminhamento de Euler e imprimir os nodos
+     // Percorre a árvore usando o caminhamento de Euler e imprime os nodos
         System.out.println();
         System.out.println("eulerTourPrint");
         System.out.print("Árvore Binária de Expressão (caminhamento de Euler): ");
         eulerTour(tree, tree.root());
         System.out.println();
         
-     // Imprimir a expressão aritmética a partir da árvore usando printExpression
+     // Imprime a expressão aritmética a partir da árvore usando printExpression
         System.out.println("Expressão aritmética a partir da árvore:");
         printExpression(tree, tree.root());
         System.out.println();
@@ -103,7 +103,7 @@ public class Metod {
                 T.addRoot(String.valueOf(ei));
                 stack.push(T);
             } else if (ei == '(') {
-                continue; // Ignorar o parêntese de abertura
+                continue; // vai ignorar o parêntese de abertura
             } else if (ei == ')') {
                 // Combinar as últimas três árvores
                 LinkedBinaryTree<String> T2 = stack.pop(); // E2
@@ -115,7 +115,7 @@ public class Metod {
                 stack.push(T);
             }
         }
-        return stack.pop(); // A árvore final será o único item restante na pilha
+        return stack.pop(); // A árvore final vai ser o único item restante na pilha
     }
 
     
@@ -142,12 +142,12 @@ public class Metod {
     // Método de avaliação da expressão aritmética
     public static double evaluateExpression(LinkedBinaryTree<String> tree, Position<String> v) throws InvalidPositionException, BoundaryViolationException {
         if (tree.isInternal(v)) {
-            // Se o nodo é interno, avalie as subárvores esquerda e direita
+            // Se o nodo é interno, avalia as subárvores esquerda e direita
             String operator = v.element();
             double x = evaluateExpression(tree, tree.left(v));
             double y = evaluateExpression(tree, tree.right(v));
 
-            // Retorne o resultado da aplicação do operador
+            // Retorna o resultado da aplicação do operador
             switch (operator) {
                 case "+":
                     return x + y;
@@ -161,7 +161,7 @@ public class Metod {
                     throw new IllegalArgumentException("Operador desconhecido: " + operator);
             }
         } else {
-            // Se o nodo é uma folha, retorne o valor armazenado nele
+            // Se o nodo é uma folha, retorna o valor armazenado nele
             return Double.parseDouble(v.element());
         }
     }
