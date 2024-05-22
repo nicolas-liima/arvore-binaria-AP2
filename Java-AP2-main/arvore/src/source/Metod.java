@@ -11,9 +11,9 @@ import java.util.Stack;
 public class Metod {
 
     public static void main(String[] args) throws InvalidPositionException, NonEmptyTreeException, EmptyTreeException, BoundaryViolationException {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Digite a expressão aritmética totalmente parentizada: ");
-//        String expression = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite a expressão aritmética totalmente parentizada: ");
+        String expression = scanner.nextLine();
     	String expression = "(((5+2)*(2-1))/(((2+9)+(7-2)-1)*8))";   	// A expressão do slide esta errada, falta parenteses então decida qual o jeito certo
         int[] count = new int[1];
         int[] values = {31, 25, 42, 12, 36, 56, 62, 75, 90}; // Valores para inserir na árvore
